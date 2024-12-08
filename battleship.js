@@ -87,3 +87,27 @@ let controller = {
     }
   }
 };
+
+function init() {
+  let fireButton = document.getElementById("fireButton");
+  fireButton.onclick = handleFireButton;
+  let guessInput = document.getElementById("guessInput");
+  guessInput.onkeydown = handleKeyPress;
+}
+
+function handleKeyPress(e) {
+  let fireButton = document.getElementById("fireButton");
+  if (e.keyCode === 13) {
+    fireButton.click();
+    return false;
+  }
+}
+
+function handleFireButton() {
+  let guessInput = document.getElementById("guessInput");
+  let guess = guessInput.value;
+  controller.processGuess(guess);
+  guessInput.value = "";
+}
+
+window.onload = init;
